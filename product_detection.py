@@ -44,7 +44,7 @@ CLASS_IMAGES = {
 
 # Prediction confidence threshold
 THRESHOLD = 0.000001
-SCALE_FACTOR = 1.5
+SCALE_FACTOR = 1.3
 
 # Model path
 MODEL_PATH = "vit_base_patch16_224_bs16_ep50.pth"
@@ -225,10 +225,7 @@ with col2:
                     res1, res2 = st.columns([1, 4], vertical_alignment="center")
                     if image_path:
                         res1.image(image_path, width=100)
-                    # res2.markdown(f"**{cls}**")
-                    res2.markdown(f"**{cls} ({conf:.7f})**")
-                top3_text = ", ".join([f"{cls} ({conf:.7f})" for cls, conf in predictions[:2]])
-                st.code(top3_text, height=80)
+                    res2.markdown(f"**{cls}**")
 
         else:
             st.image("assets/placeholder.png", caption="No prediction yet")
